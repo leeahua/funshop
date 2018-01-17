@@ -31,6 +31,6 @@ public class ProductCategoryServiceTest {
         productCategory.setCategoryName("食品");
         productCategory.setCategoryType(2);
         productCategoryService.save(productCategory);
-        Assert.assertNotNull(productCategoryService.findOne(2));
+        Assert.assertNotNull(productCategoryService.findOne(1));
     }
 }
