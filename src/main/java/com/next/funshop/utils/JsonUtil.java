@@ -9,7 +9,6 @@ import java.util.List;
 public class JsonUtil {
 
     public static String toJsonStirng(Object object){
-        List<String> list = new ArrayList<>();
         return JSON.toJSONString(object);
     }
 
