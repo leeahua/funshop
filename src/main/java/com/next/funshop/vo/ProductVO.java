@@ -1,6 +1,8 @@
 package com.next.funshop.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * Date: 2017/10/7
  * Time: 17:11
  */
+@Data
 public class ProductVO {
 
     @JsonProperty("name")
@@ -17,28 +20,4 @@ public class ProductVO {
     private Integer categoryType;
     @JsonProperty("foods")
     private List<ProductInfoVO> productInfoVOList;
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public Integer getCategoryType() {
-        return categoryType;
-    }
-
-    public void setCategoryType(Integer categoryType) {
-        this.categoryType = categoryType;
-    }
-
-    public List<ProductInfoVO> getProductInfoVOList() {
-        return productInfoVOList;
-    }
-
-    public void setProductInfoVOList(List<ProductInfoVO> productInfoVOList) {
-        this.productInfoVOList = productInfoVOList;
-    }
 }
