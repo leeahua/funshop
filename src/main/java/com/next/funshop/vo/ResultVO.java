@@ -17,4 +17,5 @@ public class ResultVO<T> {
     private String msg;
     /**具体信息*/
     private T data;
+
 }

@@ -3,10 +3,9 @@ package com.next.funshop.utils;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class JsonUtil {
+
 
     public static String toJsonStirng(Object object){
         return JSON.toJSONString(object);
