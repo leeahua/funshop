@@ -29,9 +29,9 @@
 		<!-- Cobertura SonarQube Setup -->
 		<sonar.core.codeCoveragePlugin>cobertura</sonar.core.codeCoveragePlugin>
 		<sonar.java.coveragePlugin>cobertura</sonar.java.coveragePlugin>
-		<sonar.junit.reportsPath>${project.basedir}/target/surefire-reports</sonar.junit.reportsPath>
-		<sonar.surefire.reportsPath>${project.basedir}/target/surefire-reports</sonar.surefire.reportsPath>
-		<sonar.cobertura.reportPath>${project.basedir}/target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
+		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
+		<sonar.surefire.reportsPath>target/surefire-reports</sonar.surefire.reportsPath>
+		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
 
 		<!-- SONAR -->
 		<sonar.login>admin</sonar.login>
