@@ -29,6 +29,7 @@ public class ProductService {
     }
 
     /**
+     *
      * 更具商品类目编码获取商品信息
      * @Param categoryType
      * @Param productStatus

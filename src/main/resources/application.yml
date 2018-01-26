@@ -1,6 +1,11 @@
 spring:
   profiles:
-    active: dev
+    active: sonar
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 1q2w3e4r
+    url: jdbc:mysql://127.0.0.1:3306/funshop?characterEncoding=utf-8&useSSL=false
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   jpa:

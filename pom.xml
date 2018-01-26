@@ -6,7 +6,7 @@
 	<groupId>com.next</groupId>
 	<artifactId>funshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>funshop</name>
 	<description>好好学习，天天向上</description>
@@ -26,26 +26,6 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 
-		<!-- Cobertura SonarQube Setup -->
-		<sonar.core.codeCoveragePlugin>cobertura</sonar.core.codeCoveragePlugin>
-		<sonar.java.coveragePlugin>cobertura</sonar.java.coveragePlugin>
-		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
-		<sonar.surefire.reportsPath>target/surefire-reports</sonar.surefire.reportsPath>
-		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
-
-		<!-- SONAR -->
-		<sonar.login>admin</sonar.login>
-		<sonar.password>admin</sonar.password>
-		<sonar.projectKey>sonar-cober-demo77</sonar.projectKey>
-		<sonar.projectName>funshop77</sonar.projectName>
-		<sonar.projectVersion>20180116</sonar.projectVersion>
-		<sonar.sources>src/main/java</sonar.sources>
-		<sonar.java.binaries>target/classes</sonar.java.binaries>
-		<sonar.exclusions>**/*Listener.java,**/*Runner.java,**/*Initlater.java,**/FunshopApplication.java</sonar.exclusions>
-		<sonar.host.url>http://172.20.10.38:9000</sonar.host.url>
-		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.language>java</sonar.language>
 	</properties>
 
 	<dependencies>
@@ -82,71 +62,56 @@
 			<scope>test</scope>
 		</dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.binarywang/weixin-java-mp -->
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-mp</artifactId>
             <version>2.7.0</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>16.0.1</version>
 		</dependency>
 	</dependencies>
-
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+		</profile>
+		<profile>
+			<id>prod</id>
+		</profile>
+	</profiles>
 	<build>
-		<pluginManagement>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- maven打包的时候告诉maven不需要web.xml,否刚会报找不到web.xml错误 -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.5</version>
 				<configuration>
-					<instrumentation>
-                        <excludes>
-							<exclude>com/next/funshop/domains/**</exclude>
-                            <exclude>com/next/funshop/vo/**</exclude>
-                        </excludes>
-					</instrumentation>
-					<encoding>UTF-8</encoding>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<!-- jar打包插件, 设定jar包名称不带版本号 -->
+					<warName>${project.artifactId}</warName>
 				</configuration>
-				<executions>
-					<execution>
-						<id>clean</id>
-						<phase>pre-site</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>instrument</id>
-						<phase>site</phase>
-						<goals>
-							<goal>instrument</goal>
-							<goal>cobertura</goal>
-						</goals>
-						<configuration>
-							<encoding>UTF-8</encoding>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 
-			<!-- SonarQube Plugin -->
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.0.2</version>
-			</plugin>
 		</plugins>
-		</pluginManagement>
 	</build>
+
     <repositories>
         <repository>
             <id>wechatapi</id>
