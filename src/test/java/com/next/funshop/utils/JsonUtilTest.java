@@ -19,7 +19,7 @@ public class JsonUtilTest {
     public void toJsonStirng() {
         Map<String,String> map = new HashMap<>();
         map.put("test","test");
-        JsonUtil.toJsonStirng((Object) map);
+        JsonUtil.toJson((Object) map);
 
     }
 

@@ -25,6 +25,6 @@ public class IndexControllerTest {
         Map<String,String> data = new HashMap<>();
         data.put("aaa","1234");
         data.put("bbb","5678");
-        Assert.assertEquals(JsonUtil.toJsonStirng(data),JsonUtil.toJsonStirng(indexController.data()));
+        Assert.assertEquals(JsonUtil.toJson(data),JsonUtil.toJson(indexController.data()));
     }
 }

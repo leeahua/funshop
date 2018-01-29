@@ -1,7 +1,8 @@
 package com.next.funshop.utils;
 
 
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * @Description: 工具类
@@ -12,8 +13,12 @@ import com.alibaba.fastjson.JSON;
 public class JsonUtil {
 
 
-    public static String toJsonStirng(Object object){
-        return JSON.toJSONString(object);
+    public static String toJson(Object object){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.setPrettyPrinting();
+        gsonBuilder.setDateFormat("yyyy-HH-dd HH:mm:ss");
+        Gson gson = gsonBuilder.create();
+        return gson.toJson(object);
     }
     /**
      * @Description: <br>
