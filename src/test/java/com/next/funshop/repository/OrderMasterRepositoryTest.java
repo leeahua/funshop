@@ -35,7 +35,7 @@ public class OrderMasterRepositoryTest {
         orderMaster.setBuyerPhone("13260170808");
         orderMaster.setOrderAmount(new BigDecimal(20.5));
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
-        orderMaster.setPayStatus(PayStatusEnum.UN_PAY.getCode());
+        orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
         orderMasterRepository.save(orderMaster);
     }
     @Test
