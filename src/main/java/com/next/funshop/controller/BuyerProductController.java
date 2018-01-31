@@ -48,10 +48,8 @@ public class BuyerProductController {
     public Object list(){
         log.info("【获取商品列表】");
         List<ProductInfo> productInfoList = productService.findByProductStatus(ProductStatusEnum.UP.getCode());
-        //TODO 商品类目会不会重复
         Set<Integer> categoryList = productInfoList.stream().map(productInfo -> productInfo.getCategoryType())
                 .collect(Collectors.toSet());
-
         List<ProductVO> productVOList = new ArrayList<>();
         for(Integer category : categoryList){
             ProductCategory productCategory = productCategoryService.findOne(category);

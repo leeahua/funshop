@@ -11,9 +11,14 @@ import lombok.Data;
  */
 @Data
 public class CartDto {
-
-    private String productId; //商品id
-    private Integer productQuantity; //商品数量
+    /**
+     * 商品id
+     * */
+    private String productId;
+    /**
+     * 商品数量
+     * */
+    private Integer productQuantity;
 
     public CartDto(String productId,Integer productQuantity){
         this.productId = productId;

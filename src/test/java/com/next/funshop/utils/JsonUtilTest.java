@@ -6,7 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -23,16 +25,23 @@ public class JsonUtilTest {
 
     }
 
-
-
     @Test
-    public void add() {
-        JsonUtil.add(1,2);
+    public void praseJson(){
+        Map<String,String> map = new HashMap<>();
+        map.put("test","test");
+        String jsonStr = JsonUtil.toJson((Object) map);
+        Map<String,String> map2 = JsonUtil.parseJson(jsonStr,HashMap.class);
+        System.out.println(JsonUtil.toJson(map2));
     }
 
     @Test
-    public void test(){
-        JsonUtil jsonUtil = new JsonUtil();
-        jsonUtil.add(2,3);
+    public void parseJsonArray(){
+        Map<String,String> map = new HashMap<>();
+        map.put("test","test");
+        List<Map<String,String>> list = new ArrayList<>();
+        list.add(map);
+        List<Map<String,String>> list2 = JsonUtil.parseJsonArray(JsonUtil.toJson(list));
+        System.out.println(JsonUtil.toJson(list2));
+
     }
 }
